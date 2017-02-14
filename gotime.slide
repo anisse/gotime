@@ -1,0 +1,30 @@
+Go time
+Monotonic clocks in go land
+
+Anisse Astier
+Independent Embedded Linux kernel engineer
+anisse@astier.eu
+https://plus.google.com/+AnisseA
+
+* Once upon a time
+
+    man 2 clock_gettime
+
+* Time out
+
+    time.Now()
+
+* Behind the times
+
+    man 3 adjtime
+
+* All in good time
+   time.Supb
+
+* The test of time
+
+* References for a later time
+
+[[https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/][Cloudflarge leap second blog post]]
+[[https://github.com/golang/go/issues/12914][Go bug]]
+[[https://golang.org/design/12914-monotonic][Design document of the fix]]: this is the primary source for this talk
