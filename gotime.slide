@@ -1,5 +1,6 @@
 Go time
 Monotonic clocks in go land
+16 Feb 2017
 
 Anisse Astier
 Independent Embedded Linux kernel engineer
@@ -7,30 +8,121 @@ anisse@astier.eu
 https://plus.google.com/+AnisseA
 
 * Different times
+: explain here how a watch might need to be adjusted
+
 
 * Different times
- - Wall clock
- - Monotonic clock
 
-* Once upon a time
+.image img/wallclock.jpg _ 500
 
-    man 2 clock_gettime
+* Different times
 
-* Time out
+.image img/stopwatch.png 500 _
+
+
+* Different times
+- Wall clock
+.image img/wallclock.jpg _ 200
+- Monotonic clock
+.image img/stopwatch.png 200 _
+
+* Time jumps
+
+- Timezone change (laptop, mobile phone)
+- DST change
+- NTP adjustments
+- Leap seconds
+
+: first two can be ignored with UTC
+: NTP adjustments use adjtime() and can be monotonic
+: man 3 adjtime
+: only leap seconds are "real jumps"
+
+* Leap smear
+
+[[https://developers.google.com/time/smear]]
+
+* Go time
+* Go time
 
     time.Now()
 
-* Behind the times
+Returns wall clock
 
-    man 3 adjtime
+.play timenow.go /time.Now/,/time.Now/
+
+* Elapsed time
+.play gotime.go /example1/,/Elapsed/
+
+
+* Elapsed time
+.code gotime.go /example2/,/Elapsed/
+
+--> this is bad code!
+
+Result:
+
+  Elapsed -989.12989ms
+
+* Behind the times
+: Most languages have a way to get monotonic clocks
+
+C/C++
+
+	man 2 clock_gettime
+	CLOCK_REALTIME/CLOCK_MONOTONIC
+
+Java
+
+	System.nanoTime
+
+Python
+
+	time.monotnic
+
+* Once upon a time
+
+- Google as initial target
+- Leap smear is a solved problem… right?
+- Monotonic fixes throughout the library
+Internal function:
+
+	runtime.nanotime
+
+- Go 1 Compatibilty promise
 
 * All in good time
-   time.Supb
+* All in good time
+A fix has been merged for Go 1.9
+
+It changes the internal representation of time.Time
+
+* All in good time
+The fix does not add new API functions.
+But it does change the behaviour of:
+
+	time.Since(t)
+	time.Until(t) // New in Go 1.8 !
+	t.Sub(u)
+	t.Before(u)
+
+Which are now "correct".
+
+
+* All in good time
+.code gotime.go /time.Now/,/Elapsed/
+
+--> this is now good code in Go 1.9+!
+
 
 * The test of time
 
-* References for a later time
+References:
 
 [[https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/][Cloudflarge leap second blog post]]
 [[https://github.com/golang/go/issues/12914][Go bug]]
 [[https://golang.org/design/12914-monotonic][Design document of the fix]]: this is the primary source for this talk
+
+: Unused puns:
+: * Time leap
+: * Time out
