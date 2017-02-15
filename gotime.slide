@@ -6,6 +6,12 @@ Independent Embedded Linux kernel engineer
 anisse@astier.eu
 https://plus.google.com/+AnisseA
 
+* Different times
+
+* Different times
+ - Wall clock
+ - Monotonic clock
+
 * Once upon a time
 
     man 2 clock_gettime
