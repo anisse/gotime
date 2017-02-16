@@ -127,6 +127,8 @@ References:
 [[https://github.com/golang/go/issues/12914][Go bug]]
 [[https://golang.org/design/12914-monotonic][Design document of the fix]]: this is the primary source for this talk
 
+Slides for this talk: [[http://anisse.github.io/gotime]]
+
 : Unused puns:
 : * Time leap
 : * Time out
