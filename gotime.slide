@@ -123,7 +123,7 @@ Which are now "correct".
 
 References:
 
-[[https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/][Cloudflarge leap second blog post]]
+[[https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/][Cloudflare leap second blog post]]
 [[https://github.com/golang/go/issues/12914][Go bug]]
 [[https://golang.org/design/12914-monotonic][Design document of the fix]]: this is the primary source for this talk
 
