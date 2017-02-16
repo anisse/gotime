@@ -10,7 +10,7 @@
 
     
     <script>
-      var sections = [{"Number":[1],"Title":"Different times","Elem":null,"Notes":["explain here how a watch might need to be adjusted"]},{"Number":[2],"Title":"Different times","Elem":[{"URL":"img/wallclock.jpg","Width":500,"Height":0}],"Notes":null},{"Number":[3],"Title":"Different times","Elem":[{"URL":"img/stopwatch.png","Width":0,"Height":500}],"Notes":null},{"Number":[4],"Title":"Different times","Elem":[{"Bullet":["Wall clock"]},{"URL":"img/wallclock.jpg","Width":200,"Height":0},{"Bullet":["Monotonic clock"]},{"URL":"img/stopwatch.png","Width":0,"Height":200}],"Notes":null},{"Number":[5],"Title":"Time jumps","Elem":[{"Bullet":["Timezone change (laptop, mobile phone)","DST change","NTP adjustments","Leap seconds"]}],"Notes":["first two can be ignored with UTC","NTP adjustments use adjtime() and can be monotonic","man 3 adjtime","only leap seconds are \"real jumps\""]},{"Number":[6],"Title":"Leap smear","Elem":[{"Lines":["[[https://developers.google.com/time/smear]]"],"Pre":false}],"Notes":null},{"Number":[7],"Title":"Go time","Elem":null,"Notes":null},{"Number":[8],"Title":"Go time","Elem":[{"Lines":["time.Now()"],"Pre":true},{"Lines":["Returns wall clock"],"Pre":false},{"Text":"\n\u003cpre style=\"display: none\"\u003e\u003cspan\u003epackage main\n\nimport (\n\t\u0026#34;fmt\u0026#34;\n\t\u0026#34;time\u0026#34;\n)\n\nfunc main() {\n\u003c/span\u003e\u003c/pre\u003e\n\n\u003cpre\u003e\u003cspan num=\"9\"\u003e    fmt.Println(\u0026#34;Go time\u0026#34;, time.Now())\u003c/span\u003e\n\u003c/pre\u003e\n\n\u003cpre style=\"display: none\"\u003e\u003cspan\u003e}\n\u003c/span\u003e\u003c/pre\u003e\n","Play":true,"Edit":false,"FileName":"timenow.go","Ext":".go","Raw":"CWZtdC5QcmludGxuKCJHbyB0aW1lIiwgdGltZS5Ob3coKSkK"}],"Notes":null},{"Number":[9],"Title":"Elapsed time","Elem":[{"Text":"\n\u003cpre style=\"display: none\"\u003e\u003cspan\u003epackage main\n\nimport (\n\t\u0026#34;fmt\u0026#34;\n\t\u0026#34;time\u0026#34;\n)\n\nfunc doSomething() {\n\ttime.Sleep(10 * time.Millisecond) //OMIT\n}\n\nfunc example2() { //OMIT\n\tt1 := time.Now()\n\tdoSomething()\n\t// Time jumps backwards (e.g after leap second adjustment)\n\t//...\n\tt2 := time.Now()\n\tfmt.Println(\u0026#34;Elapsed\u0026#34;, t2.Sub(t1))\n}\n\nfunc timeNow() { //OMIT\n\tfmt.Println(\u0026#34;Go time\u0026#34;, time.Now())\n}\n\nfunc main() {\n\u003c/span\u003e\u003c/pre\u003e\n\n\u003cpre\u003e\u003cspan num=\"27\"\u003e    t1 := time.Now()\u003c/span\u003e\n\u003cspan num=\"28\"\u003e    doSomething()\u003c/span\u003e\n\u003cspan num=\"29\"\u003e    //...\u003c/span\u003e\n\u003cspan num=\"30\"\u003e    t2 := time.Now()\u003c/span\u003e\n\u003cspan num=\"31\"\u003e    fmt.Println(\u0026#34;Elapsed\u0026#34;, t2.Sub(t1))\u003c/span\u003e\n\u003c/pre\u003e\n\n\u003cpre style=\"display: none\"\u003e\u003cspan\u003e}\n\u003c/span\u003e\u003c/pre\u003e\n","Play":true,"Edit":false,"FileName":"gotime.go","Ext":".go","Raw":"CXQxIDo9IHRpbWUuTm93KCkKCWRvU29tZXRoaW5nKCkKCS8vLi4uCgl0MiA6PSB0aW1lLk5vdygpCglmbXQuUHJpbnRsbigiRWxhcHNlZCIsIHQyLlN1Yih0MSkpCg=="}],"Notes":null},{"Number":[10],"Title":"Elapsed time","Elem":[{"Text":"\n\n\n\u003cpre\u003e\u003cspan num=\"13\"\u003e    t1 := time.Now()\u003c/span\u003e\n\u003cspan num=\"14\"\u003e    doSomething()\u003c/span\u003e\n\u003cspan num=\"15\"\u003e    // Time jumps backwards (e.g after leap second adjustment)\u003c/span\u003e\n\u003cspan num=\"16\"\u003e    //...\u003c/span\u003e\n\u003cspan num=\"17\"\u003e    t2 := time.Now()\u003c/span\u003e\n\u003cspan num=\"18\"\u003e    fmt.Println(\u0026#34;Elapsed\u0026#34;, t2.Sub(t1))\u003c/span\u003e\n\u003c/pre\u003e\n\n\n","Play":false,"Edit":false,"FileName":"gotime.go","Ext":".go","Raw":"CXQxIDo9IHRpbWUuTm93KCkKCWRvU29tZXRoaW5nKCkKCS8vIFRpbWUganVtcHMgYmFja3dhcmRzIChlLmcgYWZ0ZXIgbGVhcCBzZWNvbmQgYWRqdXN0bWVudCkKCS8vLi4uCgl0MiA6PSB0aW1lLk5vdygpCglmbXQuUHJpbnRsbigiRWxhcHNlZCIsIHQyLlN1Yih0MSkpCg=="},{"Lines":["--\u003e this is bad code!"],"Pre":false},{"Lines":["Result:"],"Pre":false},{"Lines":["Elapsed -989.12989ms"],"Pre":true}],"Notes":null},{"Number":[11],"Title":"Behind the times","Elem":[{"Lines":["C/C++"],"Pre":false},{"Lines":["man 2 clock_gettime\nCLOCK_REALTIME/CLOCK_MONOTONIC"],"Pre":true},{"Lines":["Java"],"Pre":false},{"Lines":["System.nanoTime"],"Pre":true},{"Lines":["Python"],"Pre":false},{"Lines":["time.monotnic"],"Pre":true}],"Notes":["Most languages have a way to get monotonic clocks"]},{"Number":[12],"Title":"Once upon a time","Elem":[{"Bullet":["Google as initial target","Leap smear is a solved problem… right?","Monotonic fixes throughout the library"]},{"Lines":["Internal function:"],"Pre":false},{"Lines":["runtime.nanotime"],"Pre":true},{"Bullet":["Go 1 Compatibilty promise"]}],"Notes":null},{"Number":[13],"Title":"All in good time","Elem":null,"Notes":null},{"Number":[14],"Title":"All in good time","Elem":[{"Lines":["A fix has been merged for Go 1.9"],"Pre":false},{"Lines":["It changes the internal representation of time.Time"],"Pre":false}],"Notes":null},{"Number":[15],"Title":"All in good time","Elem":[{"Lines":["The fix does not add new API functions.","But it does change the behaviour of:"],"Pre":false},{"Lines":["time.Since(t)\ntime.Until(t) // New in Go 1.8 !\nt.Sub(u)\nt.Before(u)"],"Pre":true},{"Lines":["Which are now \"correct\"."],"Pre":false}],"Notes":null},{"Number":[16],"Title":"All in good time","Elem":[{"Text":"\n\n\n\u003cpre\u003e\u003cspan num=\"13\"\u003e    t1 := time.Now()\u003c/span\u003e\n\u003cspan num=\"14\"\u003e    doSomething()\u003c/span\u003e\n\u003cspan num=\"15\"\u003e    // Time jumps backwards (e.g after leap second adjustment)\u003c/span\u003e\n\u003cspan num=\"16\"\u003e    //...\u003c/span\u003e\n\u003cspan num=\"17\"\u003e    t2 := time.Now()\u003c/span\u003e\n\u003cspan num=\"18\"\u003e    fmt.Println(\u0026#34;Elapsed\u0026#34;, t2.Sub(t1))\u003c/span\u003e\n\u003c/pre\u003e\n\n\n","Play":false,"Edit":false,"FileName":"gotime.go","Ext":".go","Raw":"CXQxIDo9IHRpbWUuTm93KCkKCWRvU29tZXRoaW5nKCkKCS8vIFRpbWUganVtcHMgYmFja3dhcmRzIChlLmcgYWZ0ZXIgbGVhcCBzZWNvbmQgYWRqdXN0bWVudCkKCS8vLi4uCgl0MiA6PSB0aW1lLk5vdygpCglmbXQuUHJpbnRsbigiRWxhcHNlZCIsIHQyLlN1Yih0MSkpCg=="},{"Lines":["--\u003e this is now good code in Go 1.9+!"],"Pre":false}],"Notes":null},{"Number":[17],"Title":"The test of time","Elem":[{"Lines":["References:"],"Pre":false},{"Lines":["[[https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/][Cloudflarge leap second blog post]]","[[https://github.com/golang/go/issues/12914][Go bug]]","[[https://golang.org/design/12914-monotonic][Design document of the fix]]: this is the primary source for this talk"],"Pre":false}],"Notes":["Unused puns:","* Time leap","* Time out"]}];
+      var sections = [{"Number":[1],"Title":"Different times","Elem":null,"Notes":["Came home from a night with some friends, and I was feeling hungry; so I decided to cook something. I had this nice frozen plate of pasta that said 30min in the over on the box. I think, cool! I have stuff to do anyway, so I'll put that in the oven and then wait for it be ready. Since the oven wasn't hot. It's now 2:45 am, I'll just watch for the clock until it's 3:15am, no big deal. So I go play some Rocket League, turns out the servers are quite full at this time of the night. I play a few games, and watch the time on my TV, and suddenly it's 2:20am. Wait, what? Did I just travel back in time ? Have one drink too many? I check my other watch, same time. I check my phone, same. And then it hits me. We're Sunday October 30th, and it's 2:20am it's daylight saving time.","So what should I have done instead of using fixed time to measure intervals? Simply use the timer on my oven. That's the same with computers."]},{"Number":[2],"Title":"Different times","Elem":[{"URL":"img/wallclock.jpg","Width":500,"Height":0}],"Notes":["When you want to know what time it is, you use this thing. It's wall clock"]},{"Number":[3],"Title":"Different times","Elem":[{"URL":"img/stopwatch.png","Width":0,"Height":500}],"Notes":["And if you're measuring intevals, you use a different tool: a time, a stopwatch, etc."]},{"Number":[4],"Title":"Different times","Elem":[{"Bullet":["Wall clock"]},{"URL":"img/wallclock.jpg","Width":200,"Height":0},{"Bullet":["Monotonic clock"]},{"URL":"img/stopwatch.png","Width":0,"Height":200}],"Notes":null},{"Number":[5],"Title":"Time jumps","Elem":[{"Bullet":["Timezone change (laptop, mobile phone)","DST change","NTP adjustments","Leap seconds"]}],"Notes":["first two can be ignored with UTC","NTP adjustments use adjtime() and can be monotonic","man 3 adjtime","only leap seconds are \"real jumps\""]},{"Number":[6],"Title":"Leap smear","Elem":[{"Lines":["[[https://developers.google.com/time/smear]]"],"Pre":false}],"Notes":null},{"Number":[7],"Title":"Go time","Elem":null,"Notes":null},{"Number":[8],"Title":"Go time","Elem":[{"Lines":["time.Now()"],"Pre":true},{"Lines":["Returns wall clock"],"Pre":false},{"Text":"\n\u003cpre style=\"display: none\"\u003e\u003cspan\u003epackage main\n\nimport (\n\t\u0026#34;fmt\u0026#34;\n\t\u0026#34;time\u0026#34;\n)\n\nfunc main() {\n\u003c/span\u003e\u003c/pre\u003e\n\n\u003cpre\u003e\u003cspan num=\"9\"\u003e    fmt.Println(\u0026#34;Go time\u0026#34;, time.Now())\u003c/span\u003e\n\u003c/pre\u003e\n\n\u003cpre style=\"display: none\"\u003e\u003cspan\u003e}\n\u003c/span\u003e\u003c/pre\u003e\n","Play":true,"Edit":false,"FileName":"timenow.go","Ext":".go","Raw":"CWZtdC5QcmludGxuKCJHbyB0aW1lIiwgdGltZS5Ob3coKSkK"}],"Notes":null},{"Number":[9],"Title":"Elapsed time","Elem":[{"Text":"\n\u003cpre style=\"display: none\"\u003e\u003cspan\u003epackage main\n\nimport (\n\t\u0026#34;fmt\u0026#34;\n\t\u0026#34;time\u0026#34;\n)\n\nfunc doSomething() {\n\ttime.Sleep(10 * time.Millisecond) //OMIT\n}\n\nfunc example2() { //OMIT\n\tt1 := time.Now()\n\tdoSomething()\n\t// Time jumps backwards (e.g after leap second adjustment)\n\t//...\n\tt2 := time.Now()\n\tfmt.Println(\u0026#34;Elapsed\u0026#34;, t2.Sub(t1))\n}\n\nfunc timeNow() { //OMIT\n\tfmt.Println(\u0026#34;Go time\u0026#34;, time.Now())\n}\n\nfunc main() {\n\u003c/span\u003e\u003c/pre\u003e\n\n\u003cpre\u003e\u003cspan num=\"27\"\u003e    t1 := time.Now()\u003c/span\u003e\n\u003cspan num=\"28\"\u003e    doSomething()\u003c/span\u003e\n\u003cspan num=\"29\"\u003e    //...\u003c/span\u003e\n\u003cspan num=\"30\"\u003e    t2 := time.Now()\u003c/span\u003e\n\u003cspan num=\"31\"\u003e    fmt.Println(\u0026#34;Elapsed\u0026#34;, t2.Sub(t1))\u003c/span\u003e\n\u003c/pre\u003e\n\n\u003cpre style=\"display: none\"\u003e\u003cspan\u003e}\n\u003c/span\u003e\u003c/pre\u003e\n","Play":true,"Edit":false,"FileName":"gotime.go","Ext":".go","Raw":"CXQxIDo9IHRpbWUuTm93KCkKCWRvU29tZXRoaW5nKCkKCS8vLi4uCgl0MiA6PSB0aW1lLk5vdygpCglmbXQuUHJpbnRsbigiRWxhcHNlZCIsIHQyLlN1Yih0MSkpCg=="}],"Notes":null},{"Number":[10],"Title":"Elapsed time","Elem":[{"Text":"\n\n\n\u003cpre\u003e\u003cspan num=\"13\"\u003e    t1 := time.Now()\u003c/span\u003e\n\u003cspan num=\"14\"\u003e    doSomething()\u003c/span\u003e\n\u003cspan num=\"15\"\u003e    // Time jumps backwards (e.g after leap second adjustment)\u003c/span\u003e\n\u003cspan num=\"16\"\u003e    //...\u003c/span\u003e\n\u003cspan num=\"17\"\u003e    t2 := time.Now()\u003c/span\u003e\n\u003cspan num=\"18\"\u003e    fmt.Println(\u0026#34;Elapsed\u0026#34;, t2.Sub(t1))\u003c/span\u003e\n\u003c/pre\u003e\n\n\n","Play":false,"Edit":false,"FileName":"gotime.go","Ext":".go","Raw":"CXQxIDo9IHRpbWUuTm93KCkKCWRvU29tZXRoaW5nKCkKCS8vIFRpbWUganVtcHMgYmFja3dhcmRzIChlLmcgYWZ0ZXIgbGVhcCBzZWNvbmQgYWRqdXN0bWVudCkKCS8vLi4uCgl0MiA6PSB0aW1lLk5vdygpCglmbXQuUHJpbnRsbigiRWxhcHNlZCIsIHQyLlN1Yih0MSkpCg=="},{"Lines":["--\u003e this is bad code!"],"Pre":false},{"Lines":["Result:"],"Pre":false},{"Lines":["Elapsed -989.12989ms"],"Pre":true}],"Notes":null},{"Number":[11],"Title":"Behind the times","Elem":[{"Lines":["C/C++"],"Pre":false},{"Lines":["man 2 clock_gettime\nCLOCK_REALTIME/CLOCK_MONOTONIC"],"Pre":true},{"Lines":["Java"],"Pre":false},{"Lines":["System.nanoTime"],"Pre":true},{"Lines":["Python"],"Pre":false},{"Lines":["time.monotnic"],"Pre":true}],"Notes":["Most languages have a way to get monotonic clocks"]},{"Number":[12],"Title":"Once upon a time","Elem":[{"Bullet":["Google as initial target","Leap smear is a solved problem… right?","Monotonic fixes throughout the library"]},{"Lines":["Internal function:"],"Pre":false},{"Lines":["runtime.nanotime"],"Pre":true},{"Bullet":["Go 1 Compatibilty promise"]}],"Notes":null},{"Number":[13],"Title":"All in good time","Elem":null,"Notes":null},{"Number":[14],"Title":"All in good time","Elem":[{"Lines":["A fix has been merged for Go 1.9"],"Pre":false},{"Lines":["It changes the internal representation of time.Time"],"Pre":false}],"Notes":null},{"Number":[15],"Title":"All in good time","Elem":[{"Lines":["The fix does not add new API functions.","But it does change the behaviour of:"],"Pre":false},{"Lines":["time.Since(t)\ntime.Until(t) // New in Go 1.8 !\nt.Sub(u)\nt.Before(u)"],"Pre":true},{"Lines":["Which are now \"correct\"."],"Pre":false}],"Notes":null},{"Number":[16],"Title":"All in good time","Elem":[{"Text":"\n\n\n\u003cpre\u003e\u003cspan num=\"13\"\u003e    t1 := time.Now()\u003c/span\u003e\n\u003cspan num=\"14\"\u003e    doSomething()\u003c/span\u003e\n\u003cspan num=\"15\"\u003e    // Time jumps backwards (e.g after leap second adjustment)\u003c/span\u003e\n\u003cspan num=\"16\"\u003e    //...\u003c/span\u003e\n\u003cspan num=\"17\"\u003e    t2 := time.Now()\u003c/span\u003e\n\u003cspan num=\"18\"\u003e    fmt.Println(\u0026#34;Elapsed\u0026#34;, t2.Sub(t1))\u003c/span\u003e\n\u003c/pre\u003e\n\n\n","Play":false,"Edit":false,"FileName":"gotime.go","Ext":".go","Raw":"CXQxIDo9IHRpbWUuTm93KCkKCWRvU29tZXRoaW5nKCkKCS8vIFRpbWUganVtcHMgYmFja3dhcmRzIChlLmcgYWZ0ZXIgbGVhcCBzZWNvbmQgYWRqdXN0bWVudCkKCS8vLi4uCgl0MiA6PSB0aW1lLk5vdygpCglmbXQuUHJpbnRsbigiRWxhcHNlZCIsIHQyLlN1Yih0MSkpCg=="},{"Lines":["--\u003e this is now good code in Go 1.9+!"],"Pre":false}],"Notes":null},{"Number":[17],"Title":"The test of time","Elem":[{"Lines":["References:"],"Pre":false},{"Lines":["[[https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/][Cloudflare leap second blog post]]","[[https://github.com/golang/go/issues/12914][Go bug]]","[[https://golang.org/design/12914-monotonic][Design document of the fix]]: this is the primary source for this talk"],"Pre":false}],"Notes":["Unused puns:","* Time leap","* Time out"]}];
       var titleNotes =  null 
     </script>
     <script src="Go%20time_fichiers/notes.js"></script>
@@ -39,7 +39,7 @@
 
     <section class="slides layout-widescreen">
 
-      <article>
+      <article class="current">
         <h1>Go time</h1>
         <h3>Monotonic clocks in go land</h3>
         <h3>16 February 2017</h3>
@@ -64,7 +64,7 @@
 
   
   
-      <article>
+      <article class="next">
       
         <h2>Different times</h2>
       
@@ -72,7 +72,7 @@
   
   
   
-      <article>
+      <article class="far-next">
       
         <h3>Different times</h3>
         
@@ -85,7 +85,7 @@
   
   
   
-      <article>
+      <article class="">
       
         <h3>Different times</h3>
         
@@ -98,7 +98,7 @@
   
   
   
-      <article>
+      <article class="">
       
         <h3>Different times</h3>
         
@@ -127,7 +127,7 @@
   
   
   
-      <article>
+      <article class="">
       
         <h3>Time jumps</h3>
         
@@ -148,7 +148,7 @@
   
   
   
-      <article>
+      <article class="">
       
         <h3>Leap smear</h3>
         
@@ -163,7 +163,7 @@
   
   
   
-      <article>
+      <article class="">
       
         <h2>Go time</h2>
       
@@ -171,7 +171,7 @@
   
   
   
-      <article>
+      <article class="">
       
         <h3>Go time</h3>
         
@@ -208,7 +208,7 @@ func main() {
   
   
   
-      <article>
+      <article class="">
       
         <h3>Elapsed time</h3>
         
@@ -256,7 +256,7 @@ func main() {
   
   
   
-      <article>
+      <article class="">
       
         <h3>Elapsed time</h3>
         
@@ -295,7 +295,7 @@ func main() {
   
   
   
-      <article>
+      <article class="">
       
         <h3>Behind the times</h3>
         
@@ -335,7 +335,7 @@ CLOCK_REALTIME/CLOCK_MONOTONIC</pre></div>
   
   
   
-      <article>
+      <article class="">
       
         <h3>Once upon a time</h3>
         
@@ -370,7 +370,7 @@ CLOCK_REALTIME/CLOCK_MONOTONIC</pre></div>
   
   
   
-      <article>
+      <article class="">
       
         <h2>All in good time</h2>
       
@@ -378,7 +378,7 @@ CLOCK_REALTIME/CLOCK_MONOTONIC</pre></div>
   
   
   
-      <article>
+      <article class="">
       
         <h3>All in good time</h3>
         
@@ -399,7 +399,7 @@ CLOCK_REALTIME/CLOCK_MONOTONIC</pre></div>
   
   
   
-      <article class="far-past">
+      <article class="">
       
         <h3>All in good time</h3>
         
@@ -430,7 +430,7 @@ t.Before(u)</pre></div>
   
   
   
-      <article class="past">
+      <article class="">
       
         <h3>All in good time</h3>
         
@@ -459,7 +459,7 @@ t.Before(u)</pre></div>
   
   
   
-      <article class="current">
+      <article class="">
       
         <h3>The test of time</h3>
         
@@ -471,7 +471,7 @@ t.Before(u)</pre></div>
 
   
   <p>
-    <a href="https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/" target="_blank">Cloudflarge leap second blog post</a>
+    <a href="https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/" target="_blank">Cloudflare leap second blog post</a>
 <br>
 
     <a href="https://github.com/golang/go/issues/12914" target="_blank">Go bug</a>
@@ -486,7 +486,7 @@ t.Before(u)</pre></div>
   
   
 
-      <article class="next">
+      <article class="">
         <h3>Thank you</h3>
         
           <div class="presenter">
