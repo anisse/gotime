@@ -44,9 +44,9 @@ https://plus.google.com/+AnisseA
 : man 3 adjtime
 : only leap seconds are "real jumps"
 
-* Leap smear
+* Time warp
 
-[[https://developers.google.com/time/smear]]
+Leap smear: [[https://developers.google.com/time/smear]]
 
 * Go time
 * Go time
